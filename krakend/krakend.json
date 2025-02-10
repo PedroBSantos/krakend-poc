@@ -1,0 +1,52 @@
+{
+    "$schema": "https://www.krakend.io/schema/v2.9/krakend.json",
+    "version": 3,
+    "port": 8080,
+    "timeout": "3000ms",
+    "cache_ttl": "300s",
+    "endpoints": [
+        {
+            "@comment": "Feature: todas os pedidos de compra",
+            "endpoint": "/ecommerce/v1/orders",
+            "method": "GET",
+            "output_encoding": "json",
+            "backend": [
+                {
+                    "host": [
+                        "http://orders-container:8080"
+                    ],
+                    "url_pattern": "/orders"
+                }
+            ]
+        },
+        {
+            "@comment": "Feature: cria um pedido de compra",
+            "endpoint": "/ecommerce/v1/orders/create-order",
+            "method": "POST",
+            "output_encoding": "no-op",
+            "backend": [
+                {
+                    "host": [
+                        "http://orders-container:8080"
+                    ],
+                    "url_pattern": "/orders/create-order",
+                    "encoding": "json"
+                }
+            ]
+        },
+        {
+            "@comment": "Feature: todas os produtos do estoque",
+            "endpoint": "/ecommerce/v1/stock/products",
+            "method": "GET",
+            "output_encoding": "json",
+            "backend": [
+                {
+                    "host": [
+                        "http://stock-container:8080"
+                    ],
+                    "url_pattern": "/stock/products"
+                }
+            ]
+        }
+    ]
+}
