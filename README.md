@@ -16,3 +16,11 @@ Orders:
 Stock:
 
 - GET <http://localhost:8080/ecommerce/v1/stock> ➜ GET <http://localhost:8080/stock>
+
+## Run
+
+docker compose -f docker-compose.yml -p ecommerce up -d
+
+## Down
+
+docker compose -f docker-compose.yml -p ecommerce down
