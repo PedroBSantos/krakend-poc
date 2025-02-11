@@ -17,7 +17,18 @@
                     ],
                     "url_pattern": "/orders"
                 }
-            ]
+            ],
+            "extra_config": {
+                "auth/validator": {
+                    "alg": "RS256",
+                    "jwk_url": "http://keycloak-container:8080/auth/realms/ecommerce/protocol/openid-connect/certs",
+                    "disable_jwk_security": true,
+                    "operation_debug": true,
+                    "audience": [
+                        "orders"
+                    ]
+                }
+            }
         },
         {
             "@comment": "Feature: cria um pedido de compra",
@@ -32,7 +43,18 @@
                     "url_pattern": "/orders/create-order",
                     "encoding": "json"
                 }
-            ]
+            ],
+            "extra_config": {
+                "auth/validator": {
+                    "alg": "RS256",
+                    "jwk_url": "http://keycloak-container:8080/auth/realms/ecommerce/protocol/openid-connect/certs",
+                    "disable_jwk_security": true,
+                    "operation_debug": true,
+                    "audience": [
+                        "orders"
+                    ]
+                }
+            }
         },
         {
             "@comment": "Feature: todas os produtos do estoque",
@@ -46,7 +68,18 @@
                     ],
                     "url_pattern": "/stock/products"
                 }
-            ]
+            ],
+            "extra_config": {
+                "auth/validator": {
+                    "alg": "RS256",
+                    "jwk_url": "http://keycloak-container:8080/auth/realms/ecommerce/protocol/openid-connect/certs",
+                    "disable_jwk_security": true,
+                    "operation_debug": true,
+                    "audience": [
+                        "stock"
+                    ]
+                }
+            }
         }
     ]
 }
